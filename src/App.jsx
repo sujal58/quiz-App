@@ -17,11 +17,17 @@ const ToogleTheme = () => {
   setBorderColor((prev) => prev === "border-slate-800" ? "border-gray-400" : "border-slate-800")
 }
 
+const [option, setOption] = useState("");
+
+function handleSelectOption(selectedOption){
+  setOption(selectedOption)
+}
+
   return (
     <>
     <ThemeProvider value={{themeMode, textMode, borderColor, ToogleTheme}}>
-      <Navbar/>
-      <Landing/>
+      <Navbar option = {option} />
+      <Landing handleSelectOption = {handleSelectOption} option={option} />
     </ThemeProvider>
       
     </>
