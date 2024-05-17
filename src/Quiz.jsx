@@ -6,10 +6,11 @@ import useTheme, { ThemeProvider } from './app/store';
 function Quiz({category, setActive}) {
     const [quizData, setQuizData] = useState([]);
     const [questionNo, setQuestionNo] = useState(0);
-    const [optionSelected, setOptionSelected] = useState();
+    const [optionSelected, setOptionSelected] = useState(null);
     const [marks, setMarks] = useState(0);
     const [progress, setProgress] = useState(0);
     const [submitted, setSubmitted] = useState(false);
+    const [allowNull, setAllowNull] = useState(true);
    
 
     const {themeMode, textMode, borderColor} = useTheme();
@@ -30,16 +31,20 @@ function Quiz({category, setActive}) {
     const handleSubmit = () => {
       const selectedOption = quizData[questionNo].options[optionSelected];
       const correctOption = quizData[questionNo].correctOption;
-       setSubmitted(true);
+      
+       
       // console.log(selectedOption == correctOption);
-      if(selectedOption === correctOption){
+      if(optionSelected !== null){
+        setSubmitted(true);
+        setAllowNull(false);
+        if(selectedOption === correctOption){
         setTimeout(()=>{
           setQuestionNo((prev) => prev+1);
           setMarks((prev) => prev + 1);
           setProgress((prev)=> prev + 10);
           setSubmitted(false);
         }, 500);
-      }else{
+          }else{
         setTimeout(()=>{
           setQuestionNo((prev) => prev+1);
           setProgress((prev)=> prev + 10);
@@ -47,10 +52,13 @@ function Quiz({category, setActive}) {
         }, 500);
         
       }
+        setOptionSelected(null);
+      }else{
+        setAllowNull(false);
+      }
 
-      setOptionSelected(null);
-      // setIscorrect(null);
-    }
+      }
+
     
   return (
       <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 h-screen text-white ${textMode} ${themeMode} pt-10`}>
@@ -70,7 +78,7 @@ function Quiz({category, setActive}) {
         }
         
         <div className='flex justify-center flex-col items-center font-serif text-xl'>
-          
+          <p className='text-red-600 text-lg font-bold'>{allowNull ?"":"Please select one option"}</p>
           {quizData[questionNo]?.options.map((optionVal, index)=>{
             return(<div className={`flex justify-center items-center h-10 md:h-12 lg:h-14 w-72 md:w-80 rounded-xl mb-3 md:mb-4 cursor-pointer border-2 border-solid ${borderColor} ${textMode} ${optionSelected === index ? "bg-blue-300 font-bold" : `${themeMode}`} ${(submitted && (optionVal === quizData[questionNo].correctOption)) ? "bg-green-600" : ""} ${(index === optionSelected && optionVal != quizData[questionNo].correctOption && submitted) ? "bg-red-700": `${themeMode}`}`} key={index} onClick={()=>handleAnswer(index)}>
             <p className={`text-base md:text-xl lg:text-lg xl:text-xl 2xl:text-xl text-center`} key={optionVal}>{optionVal}</p>
