@@ -16,8 +16,8 @@ function Quiz({category, setActive}) {
 
   
     useEffect(()=>{
-        axios.get("../db.json")
-        .then(res => setQuizData(res.data[category]))
+        axios.get(`https://my-json-server.typicode.com/sujal58/quiz-App/${category}`)
+        .then(res => setQuizData(res.data))
         .catch(Error => console.log(Error))
 
     },[category, setQuizData]);
