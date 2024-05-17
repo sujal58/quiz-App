@@ -36,7 +36,7 @@ function Quiz({category, setActive}) {
       // console.log(selectedOption == correctOption);
       if(optionSelected !== null){
         setSubmitted(true);
-        setAllowNull(false);
+        setAllowNull(true);
         if(selectedOption === correctOption){
         setTimeout(()=>{
           setQuestionNo((prev) => prev+1);
