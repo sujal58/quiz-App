@@ -7,17 +7,13 @@ import { SunFill, MoonFill } from 'react-bootstrap-icons';
 function Navbar({option}) {
 
   const {themeMode, textMode, ToogleTheme} = useTheme();
-  console.log(option);
   
   return (
     
     <div className={`text-center ${themeMode} ${textMode} absolute top-5 md:top-10 flex justify-between md:justify-around item-center w-screen bg-transparent`}>
-        <div className="selectedContent"><h1 className='font-bold text-xl italic'>{option}</h1></div>
+        <div className="selectedContent"><h1 className=' flex gap-2 font-bold text-xl leading-5 pl-3'>{option.icon}{option.name}</h1></div>
         <div className="toogleBar">
-          {/* <input type="checkbox" name="modechange" id=""
-           onChange={ToogleTheme}/> */}
-           
-         <label className="inline-flex items-center cursor-pointer gap-4">
+         <label className="inline-flex items-center cursor-pointer gap-3 pr-3">
           {/* <img src={moon} alt="LightMode" className='bg-white'/> */}
           <SunFill className='tetx-xl'/>
           <input type="checkbox" value="" className="sr-only peer"onChange={ToogleTheme}/>

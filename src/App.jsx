@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Quiz from './Quiz';
 import Landing from './Components/Landing';
 import Navbar from './Components/Navbar';
 import { ThemeProvider } from './app/store';
@@ -17,7 +16,7 @@ const ToogleTheme = () => {
   setBorderColor((prev) => prev === "border-slate-800" ? "border-gray-400" : "border-slate-800")
 }
 
-const [option, setOption] = useState("");
+const [option, setOption] = useState([]);
 
 function handleSelectOption(selectedOption){
   setOption(selectedOption)
