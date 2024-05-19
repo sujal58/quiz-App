@@ -81,12 +81,12 @@ function Quiz({category, setActive}) {
         <div className='flex justify-center flex-col items-center font-serif text-xl'>
           <p className='text-red-600 text-lg font-bold'>{allowNull ?"":"Please select one option"}</p>
           {quizData[questionNo]?.options.map((optionVal, index)=>{
-            return(<div className={`flex justify-center items-center h-12 2xl:h-24 sm:h-12 md:h-14 w-72 md:w-80 2xl:w-6/12 rounded-xl 2xl:rounded-3xl mb-3 md:mb-4 cursor-pointer border-2 border-solid ${borderColor} ${textMode} ${optionSelected === index ? "bg-blue-400 font-bold" : `${themeMode}`} ${(submitted && (optionVal === quizData[questionNo].correctOption)) ? "bg-green-600" : ""} ${(index === optionSelected && optionVal != quizData[questionNo].correctOption && submitted) ? "bg-red-700": `${themeMode}`}`} key={index} onClick={()=>handleAnswer(index)}>
+            return(<div className={`flex justify-center items-center h-12 md:h-12 lg:h-16 2xl:h-28  w-72 md:w-9/12 xl:w-8/12 2xl:w-9/12 rounded-xl 2xl:rounded-3xl mb-3 md:mb-4 cursor-pointer border-2 border-solid ${borderColor} ${textMode} ${optionSelected === index ? "bg-sky-400 font-bold" : `${themeMode}`} ${(submitted && (optionVal === quizData[questionNo].correctOption)) ? "bg-green-600" : ""} ${(index === optionSelected && optionVal != quizData[questionNo].correctOption && submitted) ? "bg-red-700": `${themeMode}`}`} key={index} onClick={()=>handleAnswer(index)}>
             <p className={`text-base md:text-xl lg:text-lg xl:text-xl 2xl:text-4xl text-center`} key={optionVal}>{optionVal}</p>
           </div>
           )})}
           {(questionNo < 10) ? (
-          <div className="flex justify-center items-center h-12 2xl:h-20 w-72 md:w-80 lg:w-80 xl:w-80 2xl:w-6/12 bg-purple-700 text-white rounded-xl 2xl:rounded-3xl mb-4 cursor-pointer">
+          <div className="flex justify-center items-center h-12 lg:h-16 2xl:h-28 w-72 md:w-9/12 xl:w-8/12 2xl:w-9/12 bg-purple-700 text-white rounded-xl 2xl:rounded-3xl mb-4 cursor-pointer">
             <input type="button" className='text-2xl 2xl:text-4xl cursor-pointer' value="Submit answer"  onClick={handleSubmit}/>
           </div>) : 
             <input type="button" className={`text-2xl cursor-pointer border-2 p-3 rounded-xl border-solid ${borderColor} ${textMode} hover:bg-blue-500`} value="Return to Home"  onClick={()=>{setActive(false)}}/>

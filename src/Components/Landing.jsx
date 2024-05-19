@@ -37,7 +37,7 @@ function Landing({handleSelectOption, option}) {
         </div>
         <div className='flex justify-center flex-col items-center font-serif text-xl'>
           {optionToChoose.map((optionVal, index)=>{
-            return(<div className={`flex items-center justify-between h-12 2xl:h-24 w-11/12 md:w-82 md:h-16 2xl:w-6/12 rounded-xl 2xl:rounded-3xl mb-4 cursor-pointer gap-4 ${themeMode} ${textMode} ${borderColor} box-border border-solid border-2 ring-2 `} onClick={() => handleClick(optionVal)} key={index}>
+            return(<div className={`flex items-center justify-between h-12 2xl:h-24 w-11/12 md:w-10/12 md:h-14 2xl:w-6/12 rounded-xl 2xl:rounded-3xl mb-4 cursor-pointer gap-4 ${themeMode} ${textMode} ${borderColor} box-border border-solid border-2 ring-2 `} onClick={() => handleClick(optionVal)} key={index}>
 
             {/* <i className='ml-3 p-1 rounded-xl text-red-400'><box-icon type='logo' name='html5'></box-icon></i> */}
             <p className='text-2xl md:text-3xl 2xl:text-5xl flex gap-4' key={optionVal.name}>{optionVal.icon}{optionVal.name}</p>
