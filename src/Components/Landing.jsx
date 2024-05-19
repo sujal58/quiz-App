@@ -35,7 +35,7 @@ function Landing({handleSelectOption, option}) {
               <h1 className='text-4xl font-bold md:text-5xl lg:text-5xl xl:text-6xl 2xl:text-8xl'>Frontend Quiz!</h1>
           <p className='mt-6 text-lg 2xl:text-2xl text-left italic'>Pick a subject to get started.</p>
         </div>
-        <div className='flex justify-center flex-col items-center font-serif text-xl'>
+        <div className='flex justify-start sm:justify-center flex-col items-center font-serif text-xl'>
           {optionToChoose.map((optionVal, index)=>{
             return(<div className={`flex items-center justify-between h-12 2xl:h-24 w-11/12 md:w-10/12 md:h-14 2xl:w-6/12 rounded-xl 2xl:rounded-3xl mb-4 cursor-pointer gap-4 ${themeMode} ${textMode} ${borderColor} box-border border-solid border-2 ring-2 `} onClick={() => handleClick(optionVal)} key={index}>
 
