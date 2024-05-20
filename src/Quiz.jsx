@@ -49,7 +49,7 @@ function Quiz({category, setActive}) {
           setQuestionNo((prev) => prev+1);
           setProgress((prev)=> prev + 10);
           setSubmitted(false);
-        }, 500);
+        }, 1000);
         
       }
         setOptionSelected(null);
@@ -74,15 +74,15 @@ function Quiz({category, setActive}) {
         </div>): 
         <div className="flex content-center flex-col items-center justify-center font-sansserif">
                <h2 className={`text-4xl font-normal text-center ${textMode}`}>You have Scored {marks} / {quizData.length}.</h2><br />  
-               <h3 className={`text-4xl font-normal text-center ${textMode}`}>{marks < 5 ? "Please try again." : `Congratulation on getting ${(marks/quizData?.length)*10}%.`}</h3>  
+               <h3 className={`text-4xl font-normal text-center ${textMode}`}>{marks < 5 ? "Please try again." : `Congratulation on getting ${(marks/quizData?.length)*100}%.`}</h3>  
         </div>
         }
         
         <div className='flex justify-start sm:justify-center flex-col items-center font-serif text-xl'>
           <p className='text-red-600 text-lg font-bold'>{allowNull ?"":"Please select one option"}</p>
           {quizData[questionNo]?.options.map((optionVal, index)=>{
-            return(<div className={`flex justify-center items-center h-12 md:h-12 lg:h-16 2xl:h-28 w-72 sm:w-9/12 md:w-9/12 xl:w-8/12 2xl:w-9/12 rounded-xl 2xl:rounded-3xl mb-3 md:mb-4 cursor-pointer border-2 border-solid ${borderColor} ${textMode} ${optionSelected === index ? "bg-sky-500 font-bold" : `${themeMode}`} ${(submitted && (optionVal === quizData[questionNo].correctOption)) ? "bg-green-600" : ""} ${(index === optionSelected && optionVal != quizData[questionNo].correctOption && submitted) ? "bg-red-700": `${themeMode}`}`} key={index} onClick={()=>handleAnswer(index)}>
-            <p className={`text-base md:text-xl lg:text-lg xl:text-xl 2xl:text-4xl text-center`} key={optionVal}>{optionVal}</p>
+            return(<div className={`flex justify-center items-center h-12 md:h-12 lg:h-16 2xl:h-28 w-72 sm:w-9/12 md:w-9/12 xl:w-8/12 2xl:w-9/12 rounded-xl 2xl:rounded-3xl mb-3 md:mb-4 cursor-pointer border-2 border-solid ${borderColor}  ${optionSelected === index && (themeMode === "bg-slate-800" || themeMode === "white")  ? "bg-sky-600 font-bold" : ""} ${(submitted && optionVal === quizData[questionNo].correctOption) ? "bg-green-600 text-white" : submitted && optionVal !== quizData[questionNo].correctOption && optionSelected === index ? "bg-red-500" : ""}`} key={index} onClick={()=>handleAnswer(index)}>
+            <p className={`text-base md:text-xl lg:text-lg xl:text-xl 2xl:text-4xl text-center ${textMode}`} key={optionVal}>{optionVal}</p>
           </div>
           )})}
           {(questionNo < 10) ? (
