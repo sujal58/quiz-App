@@ -49,7 +49,7 @@ function Quiz({category, setActive}) {
           setQuestionNo((prev) => prev+1);
           setProgress((prev)=> prev + 10);
           setSubmitted(false);
-        }, 1000);
+        }, 2000);
         
       }
         setOptionSelected(null);
